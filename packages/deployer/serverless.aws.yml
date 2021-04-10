@@ -1,10 +1,6 @@
 service:
   name: airnode-${opt:airnodeIdShort}
 
-plugins:
-  - serverless-plugin-typescript
-  - serverless-plugin-optimize
-
 provider:
   name: aws
   region: ${opt:region}
@@ -23,20 +19,20 @@ package:
   
 functions:
   startCoordinator:
-    handler: ./src/handlers/aws/index.startCoordinator
+    handler: ./index.startCoordinator
     timeout: 60
     reservedConcurrency: 1
     events:
       - schedule: rate(1 minute)
 
   initializeProvider:
-    handler: ./src/handlers/aws/index.initializeProvider
+    handler: ./index.initializeProvider
     timeout: 20
 
   callApi:
-    handler: ./src/handlers/aws/index.callApi
+    handler: ./index.callApi
     timeout: 30
 
   processProviderRequests:
-    handler: ./src/handlers/aws/index.processProviderRequests
+    handler: ./index.processProviderRequests
     timeout: 10

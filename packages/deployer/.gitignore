@@ -5,6 +5,7 @@
 
 # Test files
 coverage/
+.webpack
 
 # Config files
 *config.json
